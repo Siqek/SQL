@@ -29,9 +29,23 @@ app.get('/', (req, res) => {
 
 app.get('/select', (req, res) => {
     const sql = "SELECT * FROM test"
+
     con.query(sql, function(err, result, fileds){
         if (err) console.log(err)
         else res.send(result)
+    })
+})
+
+app.get('/add/:imie/:nazwisko/:klasa', (req, res) => {
+    const imie = req.params.imie
+    const nazwisko = req.params.nazwisko
+    const klasa = req.params.klasa
+
+    const sql = `INSERT INTO test (imie,nazwisko,klasa) VALUES ('${imie}', '${nazwisko}', '${klasa}')`
+
+    con.query(sql, function(err, result, fileds){
+        if (err) console.log(err)
+        else res.send("dodano rekord")
     })
 })
 
