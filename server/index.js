@@ -27,6 +27,14 @@ app.get('/', (req, res) => {
     console.log("ok /")
 })
 
+app.get('/select', (req, res) => {
+    const sql = "SELECT * FROM test"
+    con.query(sql, function(err, result, fileds){
+        if (err) console.log(err)
+        else res.send(result)
+    })
+})
+
 app.listen(port, () => {
     console.log(`aplikacja działa na porcie: ${port}`)
 })
