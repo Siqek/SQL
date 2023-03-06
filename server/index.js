@@ -8,6 +8,19 @@ const port = 8080
 
 app.use(cors())
 
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "nowa_06.03.23"
+})
+
+con.connect(function(err){
+    if (err) console.log(err)
+    else console.log("Połączono z bazą danych")
+})
+
 app.get('/', (req, res) => {
     res.send("ok /")
 
